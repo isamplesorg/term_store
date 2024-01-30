@@ -18,11 +18,20 @@ class TermRepository:
         return item.uri
 
     def read(self, uri:str) -> typing.Optional[Term]:
+        """
+        Retrieve the Term with the given URI.
+
+        Args:
+            uri: URI identifying the term to retrieve.
+
+        Returns:
+            Term or None if URI doesn't match anything.
+        """
         record = self._session.get(Term, uri)
         return record
 
     def broader(self, start_uri: str) -> typing.Generator[Term, None, None]:
-        """Get terms that are broader than the provided URI
+        """Get terms that are broader than the provided URI.
         """
         #sql = sqlalchemy.text("""WITH RECURSIVE cte(uri, scheme, name, broader, properties) AS (
         #SELECT term.uri AS uri, term.scheme AS scheme, term.name AS name, term.broader AS broader, term.properties AS properties

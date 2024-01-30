@@ -25,6 +25,8 @@ Descendant queries are simple left-anchored LIKE queries, and ancestors are
 already stored in the path itself. Updates require going through all
 descendants and changing the prefix.
 
+Note - this example doesn't work with the SQLite databases because the
+ARRAY type is not available.
 """
 from sqlalchemy import Column
 from sqlalchemy import create_engine
