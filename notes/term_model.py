@@ -5,9 +5,9 @@ Implements an SQL model for controlled vocabularies.
 import typing
 import sqlalchemy
 import sqlalchemy.orm
-import model_store
+import term_store
 
-class Term(model_store.Base):
+class Term(term_store.Base):
     __tablename__ = "term"
     uri: sqlalchemy.orm.Mapped[str] = sqlalchemy.orm.mapped_column(
         doc="Term URI. Unique across all terms.",
@@ -22,13 +22,13 @@ class Term(model_store.Base):
         index=True
     )
     broader: sqlalchemy.orm.Mapped[list[str]] = sqlalchemy.orm.mapped_column(
-        type_= model_store.JSONVariant,
+        type_= term_store.JSONVariant,
         nullable=True,
         doc="broader terms of this term.",
     )
 
     properties: sqlalchemy.orm.Mapped[dict[str, typing.Any]] = sqlalchemy.orm.mapped_column(
-        type_= model_store.JSONVariant,
+        type_= term_store.JSONVariant,
         nullable=True,
         doc="Properties of this term.",
     )

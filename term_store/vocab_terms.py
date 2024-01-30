@@ -1,5 +1,5 @@
 """
-Utility methods for loading vocabularies to the model_store.
+Utility methods for loading vocabularies to the term_store.
 """
 
 import dataclasses
@@ -8,7 +8,8 @@ import typing
 import rdflib
 import rdflib.namespace
 import rdflib.plugins.sparql
-import model_store
+from .db import Term
+from .repository import TermRepository
 
 #TODO: this is too specific:
 STORE_IDENTIFIER = "https://w3id.org/isample/vocabulary"
@@ -344,18 +345,18 @@ class SKOSVocabulary:
         return self._one_res(qres, abbreviate=abbreviate)
 
 
-    def load_terms_to_model_store(self, repository):
+    def load_terms_to_model_store(self, repository: TermRepository):
         for concept_uri in self.concept_uris():
             concept = self.concept(concept_uri)
             _properties = {
                 "labels": concept.label,
                 "definition": concept.definition,
             }
-            record = model_store.Term(
+            record = Term(
                 uri = concept_uri,
                 scheme = concept.vocabulary,
                 name = concept.name,
                 broader = concept.broader,
                 properties = _properties
             )
-            repository.add_term(record)
+            repository.add(record)
