@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "model-store"
+name = "term_store"
 version = "0.2.0"
 description = "Leveraging linkml for iSamples Core store"
 authors = ["datadave <605409+datadavev@users.noreply.github.com>"]
