@@ -10,8 +10,7 @@ JSONVariant = sqlalchemy.types.JSON().with_variant(
 )
 
 
-class Base(sqlalchemy.orm.DeclarativeBase):
-    pass
+Base = sqlalchemy.orm.declarative_base()
 
 
 class Term(Base):
