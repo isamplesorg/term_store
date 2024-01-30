@@ -1,4 +1,7 @@
-# model_store
+# term_store
 
-This is a temporary workspace to building out a prototype repository pattern for isamples core, using linkml 
-generated pydantic model and the generic graph store.
+Implements a simplified SKOS vocabulary term store.
+
+Each term is a record in the "term" table. Methods are provided for
+navigating narrower or broader terms.
+
