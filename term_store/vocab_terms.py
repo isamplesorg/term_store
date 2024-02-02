@@ -356,7 +356,7 @@ class SKOSVocabulary:
                 uri = concept_uri,
                 scheme = concept.vocabulary,
                 name = concept.name,
-                broader = concept.broader,
+                broader = ",".join(concept.broader),
                 properties = _properties
             )
             repository.add(record)

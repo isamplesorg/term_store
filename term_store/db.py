@@ -32,10 +32,9 @@ class Term(Base):
     name: sqlalchemy.orm.Mapped[str] = sqlalchemy.orm.mapped_column(
         doc="Term value, skos:prefValue", index=True
     )
-    broader: sqlalchemy.orm.Mapped[list[str]] = sqlalchemy.orm.mapped_column(
-        type_=JSONVariant,
+    broader: sqlalchemy.orm.Mapped[str] = sqlalchemy.orm.mapped_column(
         nullable=True,
-        doc="broader terms of this term.",
+        doc="broader terms of this term, comma-separated.", index=True
     )
     properties: sqlalchemy.orm.Mapped[
         dict[str, typing.Any]

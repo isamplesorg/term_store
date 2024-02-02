@@ -71,6 +71,7 @@ class TermRepository:
     def narrower(self, start_uri: str) -> typing.Iterator[Term]:
         q = self._session.query(Term)
         q = q.filter(Term.broader.contains(start_uri))
+        q = q.filter(Term.uri != start_uri)
         q = q.cte("cte", recursive=True)
         q2 = self._session.query(Term)
         q2 = q2.join(q, Term.broader.contains(q.c.uri))
