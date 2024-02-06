@@ -34,31 +34,31 @@ def load_terms(sqlite_repo):
         uri="urn:foo:c1",
         scheme="urn:foo",
         name="c1",
-        broader=["urn:foo:root",]
+        broader="urn:foo:root"
     ))
     sqlite_repo.add(term_store.db.Term(
         uri="urn:foo:c11",
         scheme="urn:foo",
         name="c11",
-        broader=["urn:foo:c1"],
+        broader="urn:foo:c1",
     ))
     sqlite_repo.add(term_store.db.Term(
         uri="urn:foo:c111",
         scheme="urn:foo",
         name="c111",
-        broader = ["urn:foo:c11"],
+        broader = "urn:foo:c11",
     ))
     sqlite_repo.add(term_store.db.Term(
         uri="urn:foo:c12",
         scheme="urn:foo",
         name="c12",
-        broader=["urn:foo:c1"],
+        broader="urn:foo:c1",
     ))
     sqlite_repo.add(term_store.db.Term(
         uri="urn:bar:f1",
         scheme="urn:bar",
         name="f1",
-        broader=["urn:foo:c1"],
+        broader="urn:foo:c1",
     ))
 
 
